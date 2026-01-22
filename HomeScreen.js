@@ -21,20 +21,11 @@ const HomeScreen = ({ navigation }) => {
     const myurl = "https://onlineuserappwebservice.onrender.com/users";
     fetch(myurl)
       .then((response) => {
-        // Throw error if cannot get data, go to nearst catch and use backup data.
-        if (!response.ok) {
-          throw new Error("HTTP error! Status: " + response.status);
-        }
         return response.json();
       })
       .then((myJson) => {
         setMyData(myJson);
         originalData = myJson;
-      })
-      .catch((error) => {
-        console.log(error);
-        setMyData(data);
-        originalData = data;
       });
   }, []);
 
